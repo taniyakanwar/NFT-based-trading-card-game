@@ -1,0 +1,52 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+contract NFTTradingCardGame {
+    struct NFTCard {
+        uint256 id;
+        string metadata;
+        address owner;
+        bool forSale;
+        uint256 price;
+    }
+
+    uint256 private _tokenIds;
+    mapping(uint256 => NFTCard) private _cards;
+    mapping(address => uint256[]) private _ownedCards;
+
+    event CardMinted(address indexed owner, uint256 tokenId, string metadata);
+    event CardListedForSale(uint256 tokenId, uint256 price);
+    event CardSold(uint256 tokenId, address newOwner, uint256 price);
+
+    function mintCard(string memory metadata) public returns (uint256) {
+        _tokenIds++;
+        uint256 newCardId = _tokenIds;
+        _cards[newCardId] = NFTCard(newCardId, metadata, msg.sender, false, 0);
+        _ownedCards[msg.sender].push(newCardId);
+        emit CardMinted(msg.sender, newCardId, metadata);
+        return newCardId;
+    }
+
+    function listCardForSale(uint256 tokenId, uint256 price) public {
+        require(_cards[tokenId].owner == msg.sender, "Not the card owner");
+        _cards[tokenId].forSale = true;
+        _cards[tokenId].price = price;
+        emit CardListedForSale(tokenId, price);
+    }
+
+    function buyCard(uint256 tokenId) public payable {
+        require(_cards[tokenId].forSale, "Card is not for sale");
+        require(msg.value >= _cards[tokenId].price, "Insufficient payment");
+
+        address previousOwner = _cards[tokenId].owner;
+        _cards[tokenId].owner = msg.sender;
+        _cards[tokenId].forSale = false;
+        payable(previousOwner).transfer(msg.value);
+
+        emit CardSold(tokenId, msg.sender, msg.value);
+    }
+
+    function getCardDetails(uint256 tokenId) public view returns (NFTCard memory) {
+        return _cards[tokenId];
+    }
+}
