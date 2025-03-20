@@ -24,3 +24,6 @@ Our vision is to build a decentralized marketplace where artists and collectors 
 - **Smart Contract-Driven Trades:** Eliminating fraud with automated payments and ownership transfers.
 
 # NFT-based-trading-card-game
+## Contract address :
+0xbEC864656D41051D2e632b42232A024c16b8Bec5
+![image](https://github.com/user-attachments/assets/e2ae232b-a843-4f3a-93b6-091fc199a9b5)
