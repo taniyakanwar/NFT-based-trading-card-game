@@ -27,3 +27,7 @@ Our vision is to build a decentralized marketplace where artists and collectors 
 ## Contract address : 0xbEC864656D41051D2e632b42232A024c16b8Bec5
 
 ![image](https://github.com/user-attachments/assets/0657e20e-19ba-481c-a5be-68abcc2d814c)
+##Frontend
+
+![image](https://github.com/user-attachments/assets/ce1f9186-1417-4ba4-93ad-27af58f8be75)
+
