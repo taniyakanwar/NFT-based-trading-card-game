@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Card Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>⚔️ NFT Trading Card Game ⚔️</h1>
+            <button id="connectWallet">Connect Wallet</button>
+        </header>
+        
+        <div class="card-container">
+            <div id="player-cards" class="card-section">
+                <h2>Your Cards</h2>
+                <div id="yourCards" class="cards"></div>
+            </div>
+
+            <div id="opponent-cards" class="card-section">
+                <h2>Opponent's Cards</h2>
+                <div id="opponentCards" class="cards"></div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="mintCard">Mint New Card</button>
+            <button id="tradeCard">Trade Card</button>
+            <button id="battle">Battle</button>
+        </div>
+
+        <p id="statusMessage"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
